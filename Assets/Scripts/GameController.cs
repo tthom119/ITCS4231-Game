@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int fruitLeft;
-    public GameObject[] totalFruit;
+    private int fruitLeft;
+    private GameObject[] totalFruit;
     public Text fruitText;
     public Text winText;
     public AudioSource fruitSound;

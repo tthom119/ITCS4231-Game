@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CameraController
+    - EnemyController
     - FruitController
     - GameController
     - LevelManager
@@ -55,8 +56,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 91
@@ -74,19 +73,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1802}
     - Class: 114
-      Script: {instanceID: 2122}
+      Script: {instanceID: 2126}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2640}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2820}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 2842}
+      Script: {instanceID: 2848}
     - Class: 114
-      Script: {instanceID: 3046}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3054}
+    - Class: 114
+      Script: {instanceID: 3370}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -101,6 +102,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
+    - Class: 195
+      Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
     - Class: 198
@@ -112,6 +115,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 238
       Script: {instanceID: 0}
     Assets/Scenes/GameOver.unity:
     - Class: 1
@@ -128,24 +133,26 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2482}
+      Script: {instanceID: 2486}
     - Class: 114
-      Script: {instanceID: 2640}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2820}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 3046}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3498}
+      Script: {instanceID: 3506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -175,24 +182,26 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2482}
+      Script: {instanceID: 2486}
     - Class: 114
-      Script: {instanceID: 2640}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2820}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 3046}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3498}
+      Script: {instanceID: 3506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -222,26 +231,28 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2220}
     - Class: 114
-      Script: {instanceID: 2370}
+      Script: {instanceID: 2374}
     - Class: 114
-      Script: {instanceID: 2482}
+      Script: {instanceID: 2486}
     - Class: 114
-      Script: {instanceID: 2640}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2820}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 3046}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 3498}
+      Script: {instanceID: 3506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -367,6 +378,12 @@ ScriptsOnlyBuild:
     className: PlayerController
   - hash:
       serializedVersion: 2
+      Hash: c8d581731d1840417a08b4d30f72d96a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pathfinder
+  - hash:
+      serializedVersion: 2
       Hash: 300fd99066f8c288e85f5e81ce65fe34
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -421,7 +438,7 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 475622db4bb1c04a488ec48f858b8ccc
+      Hash: baafef3ae5216d07d570ac02abcaf307
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -547,6 +564,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: 139b5173070ca9aa1be7aabd483fa5a4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GridBase
+  - hash:
+      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -593,6 +616,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 89d47b969cfe35caacb6fdff67285197
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyController
   - hash:
       serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
@@ -720,4 +749,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/GameOver.unity
   - Assets/Scenes/GameWin.unity
   playerPath: C:/Users/tgtho/Documents/UNCC/ITCS 4231 Advanced Game Design/Fennel's
-    World/Builds/Windows/Fennel's World.exe
+    World/Builds/Fennel's World.exe

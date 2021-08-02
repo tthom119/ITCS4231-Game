@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float lives;
     public Text livesleft;
     public AudioSource sound;
+    private bool hitByEnemy;
+
     void Start()
     {
         player = GetComponent<CharacterController>();
@@ -31,37 +33,60 @@ public class PlayerController : MonoBehaviour
         direction = direction.normalized * speed;
         direction.y = temp_y;
 
-        if(player.isGrounded){
-            if(Input.GetButtonDown("Jump")){
+        if (player.isGrounded)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
                 direction.y = jumpHeight;
             }
         }
-        
-        
+
         direction.y = direction.y + (Physics.gravity.y * gravityFactor * Time.deltaTime);
         player.Move(direction * Time.deltaTime);
         animator.SetFloat("speed", (Mathf.Abs(Input.GetAxis("Vertical"))));
-       
+
     }
-    void FixedUpdate(){
-        if(transform.position.y < fallThreshold){
-              lives--;
-              sound.Play();
-              livesleft.text = string.Format("Lives Left: {0}", lives);
-              if(lives <= 0){
-                Cursor.lockState = CursorLockMode.None;
-                SceneManager.LoadScene("GameOver");
-                
-              }
-              else{
-                  transform.position = new Vector3(0, 0.2f, 0);
-              }
+    //Check if player has fallen off the map
+    void FixedUpdate()
+    {
+        if (transform.position.y < fallThreshold)
+        {
+            Respawn();
+        }
+        if(hitByEnemy){
+            Respawn();
+        }
+    } 
+
+    //Checks for collisions with peaches
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "peach")
+        {
+            FindObjectOfType<GameController>().collectFruit();
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.tag == "enemy"){
+            hitByEnemy = true;
         }
     }
-    private void OnTriggerEnter(Collider other){
-            if(other.gameObject.tag == "peach"){
-                FindObjectOfType<GameController>().collectFruit();
-                Destroy(other.gameObject);
-            }
+
+    //Respawn player if they have died and check if game over
+    private void Respawn()
+    {
+        hitByEnemy = false;
+        lives--;
+        sound.Play();
+        livesleft.text = string.Format("Lives Left: {0}", lives);
+        if (lives <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("GameOver");
+
+        }
+        else
+        {
+            transform.position = new Vector3(0, 0.2f, 0);
+        }
     }
 }
